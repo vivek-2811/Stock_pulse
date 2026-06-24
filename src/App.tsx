@@ -49,6 +49,8 @@ const ShowcasePage = lazy(() => import('./features/showcase/ShowcasePage').then(
 const AboutStockPulse = lazy(() => import('./features/showcase/AboutStockPulse').then(m => ({ default: m.AboutStockPulse })));
 const SystemStatusPage = lazy(() => import('./features/status/SystemStatusPage').then(m => ({ default: m.SystemStatusPage })));
 const BacktestPage = lazy(() => import('./features/portfolio/BacktestPage').then(m => ({ default: m.BacktestPage })));
+const HorizonPage = lazy(() => import('./features/horizon/HorizonPage').then(m => ({ default: m.HorizonPage })));
+
 
 function App() {
   return (
@@ -85,6 +87,8 @@ function App() {
                     <Route path="/system-status" element={<SystemStatusPage />} />
                     <Route path="/backtest" element={<BacktestPage />} />
                     <Route path="/settings" element={<SettingsPage />} />
+                    <Route path="/horizon" element={<HorizonPage />} />
+
                     
                     {/* Catch-all redirects back to dashboard */}
                     <Route path="*" element={<Navigate to="/dashboard" replace />} />

@@ -17,8 +17,10 @@ import {
   Activity,
   ChevronRight,
   ShieldCheck,
-  Search,
-  BookOpen
+  BookOpen,
+  History,
+  Heart,
+  Building2
 } from 'lucide-react';
 import { useShowcaseStore } from '../../store/useShowcaseStore';
 import { useDemoReset } from '../../components/DemoResetProvider';
@@ -82,6 +84,13 @@ export const ShowcasePage: React.FC = () => {
       description: 'Lighthouse audit metrics, bundle sizes, and route diagnostics.',
       icon: ShieldCheck,
       color: 'text-[#00FF94] bg-[#00FF94]/10 border-[#00FF94]/20'
+    },
+    {
+      name: 'Horizon Finance Ledger',
+      route: '/horizon',
+      description: 'Obsidian dark fintech ledger with zero-latency category pills and detail drawers.',
+      icon: History,
+      color: 'text-[#00FF87] bg-[#00FF87]/10 border-[#00FF87]/20'
     }
   ];
 
@@ -220,6 +229,88 @@ export const ShowcasePage: React.FC = () => {
               </div>
             );
           })}
+        </div>
+      </motion.div>
+
+      {/* External Portfolio Projects */}
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.22 }}
+        className="glass-card border border-border-glass rounded-2xl p-5 flex flex-col gap-4"
+      >
+        <div className="flex items-center gap-2">
+          <ExternalLink className="w-4.5 h-4.5 text-app-green" />
+          <h3 className="text-xs font-bold uppercase tracking-wider text-white">Other Portfolio Projects</h3>
+        </div>
+        <p className="text-xs text-text-secondary leading-normal">
+          Additional full-stack and frontend projects deployed to production. Click any card to open the live application.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {/* Aurora Health Companion */}
+          <div
+            onClick={() => window.open('https://health-companion-phi.vercel.app/signin', '_blank')}
+            className="group relative border border-border-glass hover:border-rose-500/40 rounded-xl p-5 flex flex-col gap-3 hover:bg-rose-500/[0.03] cursor-pointer transition-all duration-200 overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-[120px] h-[120px] bg-rose-500/10 rounded-full blur-[60px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="flex items-start justify-between">
+              <div className="w-10 h-10 rounded-xl bg-rose-500/10 border border-rose-500/25 flex items-center justify-center text-rose-400 shrink-0">
+                <Heart className="w-5 h-5" />
+              </div>
+              <div className="flex items-center gap-1 text-[10px] font-bold text-rose-400/70 uppercase tracking-wider bg-rose-500/10 border border-rose-500/20 rounded-full px-2 py-0.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-rose-400 animate-pulse" />
+                Live
+              </div>
+            </div>
+            <div>
+              <h4 className="text-sm font-bold text-white group-hover:text-rose-300 transition-colors">Aurora Health Companion</h4>
+              <p className="text-[11px] text-text-muted mt-1.5 leading-relaxed">
+                AI-powered personal health dashboard with symptom tracking, wellness insights, and intelligent care recommendations.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-1.5 mt-auto">
+              {['React', 'TypeScript', 'AI', 'Vercel'].map(tag => (
+                <span key={tag} className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/5 border border-border-glass text-text-muted">{tag}</span>
+              ))}
+            </div>
+            <div className="flex items-center gap-1 text-[10px] font-semibold text-text-muted group-hover:text-rose-400 transition-colors mt-1">
+              <ExternalLink className="w-3 h-3" />
+              health-companion-phi.vercel.app
+            </div>
+          </div>
+
+          {/* Smart City Connect */}
+          <div
+            onClick={() => window.open('https://68ebc5df889a4643dcd11e66--smart-city-connectt.netlify.app/', '_blank')}
+            className="group relative border border-border-glass hover:border-sky-500/40 rounded-xl p-5 flex flex-col gap-3 hover:bg-sky-500/[0.03] cursor-pointer transition-all duration-200 overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-[120px] h-[120px] bg-sky-500/10 rounded-full blur-[60px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="flex items-start justify-between">
+              <div className="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/25 flex items-center justify-center text-sky-400 shrink-0">
+                <Building2 className="w-5 h-5" />
+              </div>
+              <div className="flex items-center gap-1 text-[10px] font-bold text-sky-400/70 uppercase tracking-wider bg-sky-500/10 border border-sky-500/20 rounded-full px-2 py-0.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
+                Live
+              </div>
+            </div>
+            <div>
+              <h4 className="text-sm font-bold text-white group-hover:text-sky-300 transition-colors">Smart City Connect</h4>
+              <p className="text-[11px] text-text-muted mt-1.5 leading-relaxed">
+                Urban infrastructure management platform for real-time city monitoring, citizen services, and IoT sensor integration.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-1.5 mt-auto">
+              {['React', 'IoT', 'Real-time', 'Netlify'].map(tag => (
+                <span key={tag} className="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/5 border border-border-glass text-text-muted">{tag}</span>
+              ))}
+            </div>
+            <div className="flex items-center gap-1 text-[10px] font-semibold text-text-muted group-hover:text-sky-400 transition-colors mt-1">
+              <ExternalLink className="w-3 h-3" />
+              smart-city-connectt.netlify.app
+            </div>
+          </div>
         </div>
       </motion.div>
 

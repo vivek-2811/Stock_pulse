@@ -162,7 +162,9 @@ export const Layout: React.FC = () => {
         else if (key === 'b') navigate('/backtest');
         else if (key === 'a') navigate('/showcase');
         else if (key === 'o') navigate('/settings');
+        else if (key === 'f') navigate('/horizon');
       } else if (key === 'g') {
+
         lastKey = 'g';
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => {
@@ -192,7 +194,9 @@ export const Layout: React.FC = () => {
     { name: 'Portfolio', icon: BriefcaseBusiness, path: '/portfolio' },
     { name: 'Backtest Sandbox', icon: Sliders, path: '/backtest' },
     { name: 'Transactions', icon: History, path: '/transactions' },
+    { name: 'Horizon Finance', icon: History, path: '/horizon' },
     { name: 'Watchlist', icon: Star, path: '/watchlist' },
+
     { name: 'Compare', icon: Scale, path: '/compare' },
     { name: 'Showcase', icon: Compass, path: '/showcase' },
     { name: 'System Status', icon: Activity, path: '/system-status' },

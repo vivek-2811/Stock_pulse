@@ -64,7 +64,9 @@ export const KeyboardShortcutsModal: React.FC<KeyboardShortcutsModalProps> = ({
     { keys: ['g', 'm'], label: 'Go to Compare Tickers' },
     { keys: ['g', 'h'], label: 'Go to Project Health' },
     { keys: ['g', 'a'], label: 'Go to Showcase & Tour' },
+    { keys: ['g', 'f'], label: 'Go to Horizon Finance Ledger' },
   ];
+
 
   return (
     <AnimatePresence>
