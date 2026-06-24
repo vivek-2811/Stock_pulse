@@ -1,0 +1,241 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  body {
+    @apply bg-app-bg text-on-surface font-inter antialiased;
+  }
+}
+
+@layer components {
+  /* Primary glass card — used for every stock/metric card per DESIGN.md */
+  .glass-card {
+    @apply relative rounded-lg backdrop-blur-glass;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid transparent;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03), rgba(255,255,255,0.03)),
+      linear-gradient(135deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02));
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  .glass-card-hover {
+    @apply transition-shadow duration-200;
+  }
+  .glass-card-hover:hover {
+    @apply shadow-glow-green;
+  }
+
+  /* Price chip — positive/negative delta indicator */
+  .price-chip {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-label-data;
+  }
+  .price-chip-positive {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-label-data bg-app-green/10 text-app-green;
+  }
+  .price-chip-negative {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-label-data bg-app-red/10 text-app-red;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-app-green text-black font-semibold rounded px-4 py-2 transition-shadow duration-150;
+  }
+  .btn-primary:hover {
+    @apply shadow-glow-green-sm;
+  }
+
+  .btn-ghost {
+    @apply bg-surface-glass border border-border-glass text-on-surface rounded px-4 py-2;
+  }
+
+  /* Input fields */
+  .input-field {
+    @apply bg-surface-low border border-border-glass rounded px-3 py-2 text-on-surface outline-none transition-shadow duration-150;
+  }
+  .input-field:focus {
+    @apply border-app-green shadow-glow-green-sm;
+  }
+
+  /* Monospaced numeric values — prevents layout jump on live updates */
+  .num-data {
+    @apply font-mono text-label-data tabular-nums;
+  }
+
+  /* Chart endpoint dot */
+  .chart-dot-green {
+    @apply rounded-full bg-app-green shadow-dot-green;
+  }
+  .chart-dot-red {
+    @apply rounded-full bg-app-red shadow-dot-red;
+  }
+
+  /* Table row hover per DESIGN.md: lift background 2%, no harsh borders */
+  .table-row-hover {
+    @apply transition-colors duration-150;
+  }
+  .table-row-hover:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
+}
+
+@keyframes revealUp {
+  0% {
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Card hover lift effect for next-level visual feedback */
+.card-hover-lift {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card-hover-lift:hover {
+  transform: translateY(-3px);
+}
+
+/* Pulse keyframes for performance cards */
+@keyframes pulse-emerald {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(0, 255, 148, 0.05);
+    border-color: rgba(0, 255, 148, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 148, 0.22);
+    border-color: rgba(0, 255, 148, 0.35);
+  }
+}
+
+@keyframes pulse-crimson {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(255, 59, 92, 0.05);
+    border-color: rgba(255, 59, 92, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 59, 92, 0.22);
+    border-color: rgba(255, 59, 92, 0.35);
+  }
+}
+
+.animate-pulse-emerald {
+  animation: pulse-emerald 3.5s infinite ease-in-out;
+}
+
+.animate-pulse-crimson {
+  animation: pulse-crimson 3.5s infinite ease-in-out;
+}
+
+/* Layered Glassmorphism System */
+.layered-glass {
+  backdrop-filter: blur(24px);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.04),
+    0 4px 20px -2px rgba(0, 0, 0, 0.5),
+    0 0 12px rgba(0, 255, 148, 0.01);
+}
+
+.layered-glass-hover {
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.layered-glass-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    inset 0 1px 1px rgba(255, 255, 255, 0.08),
+    0 8px 30px -4px rgba(0, 0, 0, 0.6),
+    0 0 16px rgba(0, 255, 148, 0.04);
+}
+
+/* Sidebar Active Rail Neon Indicator (Linear-style) */
+.active-rail-indicator {
+  position: absolute;
+  left: 0;
+  top: 15%;
+  height: 70%;
+  width: 3px;
+  background: #00FF94;
+  box-shadow: 0 0 10px #00FF94, 0 0 20px rgba(0, 255, 148, 0.5);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Accessibility: prefers-reduced-motion support */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: scroll !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+  .card-hover-lift:hover, .layered-glass-hover:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .animate-pulse-emerald, .animate-pulse-crimson, .animate-spin, .animate-pulse {
+    animation: none !important;
+  }
+}
+
+/* Premium Noise Overlay & Aurora Effects */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  content: "";
+  opacity: 0.022;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+@keyframes aurora-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(12%, 8%) scale(1.15) rotate(180deg);
+  }
+}
+
+@keyframes aurora-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1.1) rotate(0deg);
+  }
+  50% {
+    transform: translate(-8%, -12%) scale(0.9) rotate(-180deg);
+  }
+}
+
+.animate-aurora-1 {
+  animation: aurora-1 30s infinite alternate ease-in-out;
+}
+
+.animate-aurora-2 {
+  animation: aurora-2 25s infinite alternate ease-in-out;
+}
+
+
+
